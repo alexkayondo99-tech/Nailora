@@ -3,112 +3,202 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nailora | Nail Beauty</title>
+<title>Nailora | Luxury Nail Booking</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,sans-serif;background:#fffaf8;color:#292329}
-header{padding:22px;background:#fff;display:flex;justify-content:space-between;align-items:center}
-.logo{font-size:27px;font-weight:bold;color:#9b5477}
-nav a{margin-left:12px;text-decoration:none;color:#333;font-size:14px}
-.hero{padding:55px 24px;background:#f3e3ea;text-align:center}
-.hero h1{font-size:38px;margin-bottom:15px;color:#713d59}
-.hero p{font-size:17px;margin-bottom:22px}
-.btn{background:#9b5477;color:white;padding:14px 22px;border:none;border-radius:8px;text-decoration:none;display:inline-block}
-section{padding:35px 20px}
-h2{text-align:center;margin-bottom:24px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
-.card{background:white;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px #0001}
-.card img{width:100%;height:180px;object-fit:cover}
-.card h3{padding:12px 10px 5px}
-.card p{padding:0 10px 14px;color:#777}
-form{max-width:500px;margin:auto}
-input,select,textarea{width:100%;padding:14px;margin:9px 0;border:1px solid #ddd;border-radius:8px;font-size:16px}
-form button{width:100%;cursor:pointer}
-footer{text-align:center;padding:25px;background:#292329;color:white}
+body{font-family:Arial,sans-serif;background:#faf8f5;color:#241d1a}
+header{display:flex;justify-content:space-between;align-items:center;padding:20px 6%;background:#faf8f5;position:sticky;top:0;z-index:10}
+.logo{font-family:Georgia,serif;font-size:30px}
+nav{display:flex;gap:20px;align-items:center}
+nav button,.btn{border:0;background:#241d1a;color:white;padding:12px 18px;border-radius:30px;cursor:pointer}
+nav a{color:#241d1a;text-decoration:none;font-size:14px}
+.hero{min-height:540px;padding:100px 7%;background:linear-gradient(#0006,#0006),url('https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=1600&q=85') center/cover;color:white}
+.hero small{letter-spacing:5px}
+.hero h1{font-family:Georgia,serif;font-size:clamp(42px,8vw,76px);max-width:750px;margin:25px 0}
+.hero p{font-size:19px;max-width:600px;line-height:1.6}
+.searchbox{margin-top:35px;background:white;color:#333;padding:18px;border-radius:18px;max-width:750px;display:flex;flex-wrap:wrap;gap:10px}
+.searchbox input{flex:1;min-width:140px;padding:14px;border:1px solid #eee;border-radius:10px}
+.searchbox button{background:#241d1a;color:white;border:0;padding:14px 22px;border-radius:10px}
+section{padding:60px 6%}
+h2{text-align:center;font-family:Georgia,serif;font-size:36px;margin-bottom:15px}
+.sub{text-align:center;color:#777;margin-bottom:30px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px}
+.card{background:white;border-radius:16px;overflow:hidden;box-shadow:0 4px 20px #00000008}
+.card img{width:100%;height:240px;object-fit:cover}
+.card h3{padding:15px 15px 8px}
+.card p{padding:0 15px 15px;color:#777}
+.card button{margin:0 15px 18px}
+.btn{display:inline-block;text-decoration:none}
+.artist{padding:25px}
+.artist h3{margin-bottom:10px}
+.artist p{margin:8px 0;color:#777}
+.formbox{max-width:600px;margin:auto;background:white;padding:25px;border-radius:18px}
+form input,form select,form textarea{width:100%;padding:14px;margin:10px 0;border:1px solid #ddd;border-radius:10px;font-size:16px}
+form button{width:100%;padding:15px;background:#241d1a;color:white;border:0;border-radius:10px;font-size:16px}
+.hidden{display:none}
+footer{background:#241d1a;color:white;padding:35px;text-align:center}
+footer p{margin-top:10px;color:#ccc}
+.mobile-nav{display:none}
+@media(max-width:650px){
+header{padding:16px 5%}
+nav a{display:none}
+nav button{padding:10px}
+.hero{padding:75px 6%;min-height:620px}
+.hero h1{font-size:52px}
+.searchbox{flex-direction:column}
+.searchbox input,.searchbox button{width:100%}
+section{padding:45px 5%}
+h2{font-size:30px}
+}
 </style>
 </head>
 <body>
 
 <header>
-<div class="logo">Nailora</div>
+<div class="logo">Nailora <span style="color:#9b5f55">.</span></div>
 <nav>
 <a href="#designs">Designs</a>
-<a href="#booking">Book</a>
+<a href="#artists">Find an artist</a>
+<a href="#technicians">For technicians</a>
+<button onclick="showSection('booking')">Book now</button>
 </nav>
 </header>
 
-<div class="hero">
-<h1>Beauty at Your Fingertips</h1>
-<p>Discover beautiful nail designs and book your nail artist.</p>
-<a class="btn" href="#booking">Book an Appointment</a>
+<div id="home">
+<section class="hero">
+<small>LUXURY NAIL BOOKING</small>
+<h1>Beautiful nails,<br><i>beautifully booked.</i></h1>
+<p>Discover stunning designs and book the most talented nail artists in your city.</p>
+<div class="searchbox">
+<input id="citySearch" placeholder="City or neighborhood">
+<input id="serviceSearch" placeholder="Gel, acrylic, artist name...">
+<button onclick="searchArtists()">Search artists</button>
+</div>
+</section>
 </div>
 
 <section id="designs">
-<h2>Discover Nail Designs</h2>
+<h2>Discover nail designs</h2>
+<p class="sub">Find your next nail inspiration.</p>
 <div class="grid">
-
 <div class="card">
-<img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=600&q=80">
-<h3>Elegant Nails</h3>
-<p>Timeless beauty</p>
+<img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=700&q=80">
+<h3>Elegant Nude</h3><p>Natural • Timeless</p>
+<button class="btn" onclick="showSection('booking')">Book this style</button>
 </div>
-
 <div class="card">
-<img src="https://images.unsplash.com/photo-1610992015732-2449b7630a4c?auto=format&fit=crop&w=600&q=80">
-<h3>Modern Nails</h3>
-<p>Trending styles</p>
+<img src="https://images.unsplash.com/photo-1610992015732-2449b763f5d8?auto=format&fit=crop&w=700&q=80">
+<h3>French Elegance</h3><p>Classic • Chic</p>
+<button class="btn" onclick="showSection('booking')">Book this style</button>
 </div>
-
 <div class="card">
-<img src="https://images.unsplash.com/photo-1632345031435-8727f6897d53?auto=format&fit=crop&w=600&q=80">
-<h3>Creative Nails</h3>
-<p>Express yourself</p>
+<img src="https://images.unsplash.com/photo-1632345031435-8727f6897d53?auto=format&fit=crop&w=700&q=80">
+<h3>Luxury Nail Art</h3><p>Creative • Premium</p>
+<button class="btn" onclick="showSection('booking')">Book this style</button>
 </div>
-
 <div class="card">
-<img src="https://images.unsplash.com/photo-1619946645028-9f2f9e1f1f1f?auto=format&fit=crop&w=600&q=80">
-<h3>Luxury Nails</h3>
-<p>Beauty and elegance</p>
+<img src="https://images.unsplash.com/photo-1614909998553-3d2d0c6a5d9c?auto=format&fit=crop&w=700&q=80">
+<h3>Glossy Nails</h3><p>Modern • Beautiful</p>
+<button class="btn" onclick="showSection('booking')">Book this style</button>
 </div>
-
 </div>
 </section>
 
-<section id="booking">
-<h2>Book an Appointment</h2>
-<form id="bookingForm">
-<input id="name" placeholder="Your full name" required>
-<input id="phone" placeholder="Your phone number" required>
-<select id="service" required>
-<option value="">Select nail service</option>
+<section id="artists">
+<h2>Find nail artists</h2>
+<p class="sub">Discover professionals near you.</p>
+<div id="artistResults" class="grid">
+<div class="card artist">
+<h3>Discover professionals</h3>
+<p>Search your city to find nail technicians.</p>
+</div>
+</div>
+</section>
+
+<section id="booking" class="hidden">
+<h2>Book an appointment</h2>
+<p class="sub">Request your appointment with a nail artist.</p>
+<div class="formbox">
+<form onsubmit="submitBooking(event)">
+<input id="bookingName" placeholder="Your full name" required>
+<input id="bookingPhone" placeholder="Phone number" required>
+<input id="bookingCity" placeholder="City" required>
+<select id="bookingService" required>
+<option value="">Select a service</option>
 <option>Manicure</option>
+<option>Gel nails</option>
+<option>Acrylic nails</option>
 <option>Pedicure</option>
-<option>Gel Nails</option>
-<option>Acrylic Nails</option>
-<option>Nail Art</option>
+<option>Nail art</option>
+<option>Other</option>
 </select>
-<input id="date" type="date" required>
-<textarea id="message" placeholder="Additional details"></textarea>
-<button class="btn" type="submit">Send Booking Request</button>
+<input id="bookingDate" type="date" required>
+<textarea id="bookingNotes" placeholder="Additional details (optional)"></textarea>
+<button type="submit">Send booking request</button>
 </form>
+</div>
+</section>
+
+<section id="technicians">
+<h2>Join Nailora</h2>
+<p class="sub">Grow your nail business. Connect with new clients.</p>
+<div class="formbox">
+<form onsubmit="submitArtist(event)">
+<input id="techName" placeholder="Your name or salon name" required>
+<input id="techPhone" placeholder="Phone number" required>
+<input id="techCity" placeholder="City and location" required>
+<select id="techServices" required>
+<option value="">Your main service</option>
+<option>Manicure</option>
+<option>Gel nails</option>
+<option>Acrylic nails</option>
+<option>Pedicure</option>
+<option>Nail art</option>
+<option>All nail services</option>
+</select>
+<textarea id="techAbout" placeholder="Tell clients about your work"></textarea>
+<button type="submit">Apply to join Nailora</button>
+</form>
+</div>
 </section>
 
 <footer>
-<p>© 2026 Nailora</p>
-<p>Discover. Choose. Book.</p>
+<div class="logo">Nailora.</div>
+<p>Discover. Connect. Book.</p>
+<p>Luxury nail beauty, made simple.</p>
 </footer>
 
 <script>
-document.getElementById("bookingForm").addEventListener("submit",function(e){
+function showSection(id){
+document.getElementById('booking').classList.add('hidden');
+document.getElementById('designs').classList.remove('hidden');
+document.getElementById('artists').classList.remove('hidden');
+document.getElementById('technicians').classList.remove('hidden');
+if(id==='booking'){
+document.getElementById('booking').classList.remove('hidden');
+document.getElementById('booking').scrollIntoView({behavior:'smooth'});
+}else{
+document.getElementById(id).scrollIntoView({behavior:'smooth'});
+}
+}
+
+function searchArtists(){
+const city=document.getElementById('citySearch').value;
+const service=document.getElementById('serviceSearch').value;
+const result=document.getElementById('artistResults');
+result.innerHTML='<div class="card artist"><h3>Search for '+(service||'nail services')+'</h3><p>Location: '+(city||'Any city')+'</p><p>Artist profiles will appear here as Nailora professionals join.</p></div>';
+document.getElementById('artists').scrollIntoView({behavior:'smooth'});
+}
+
+function submitBooking(e){
 e.preventDefault();
-let text="Hello Nailora, I want to book an appointment.%0A"+
-"Name: "+document.getElementById("name").value+"%0A"+
-"Phone: "+document.getElementById("phone").value+"%0A"+
-"Service: "+document.getElementById("service").value+"%0A"+
-"Date: "+document.getElementById("date").value+"%0A"+
-"Details: "+document.getElementById("message").value;
-window.open("https://wa.me/?text="+text,"_blank");
-});
+alert('Your booking request form is ready. Online booking delivery will be connected when Nailora backend is built.');
+}
+
+function submitArtist(e){
+e.preventDefault();
+alert('Your technician registration form is ready. Nailora verification will be connected when the backend is built.');
+}
 </script>
 
 </body>
