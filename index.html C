@@ -1,205 +1,359 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Nailora | Luxury Nail Booking</title>
+
 <style>
+
 *{box-sizing:border-box;margin:0;padding:0}
+
 body{font-family:Arial,sans-serif;background:#faf8f5;color:#241d1a}
-header{display:flex;justify-content:space-between;align-items:center;padding:20px 6%;background:#faf8f5;position:sticky;top:0;z-index:10}
+
+header{display:flex;justify-content:space-between;align-items:center;padding:20px 6%;background:#faf8f5}
+
 .logo{font-family:Georgia,serif;font-size:30px}
+
 nav{display:flex;gap:20px;align-items:center}
-nav button,.btn{border:0;background:#241d1a;color:white;padding:12px 18px;border-radius:30px;cursor:pointer}
-nav a{color:#241d1a;text-decoration:none;font-size:14px}
-.hero{min-height:540px;padding:100px 7%;background:linear-gradient(#0006,#0006),url('https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=1600&q=85') center/cover;color:white}
+
+nav a{color:#241d1a;text-decoration:none}
+
+.menu-btn{display:none;border:1px solid #ddd;background:none;padding:12px;border-radius:50%;font-size:22px}
+
+.hero{padding:100px 6%;min-height:550px;background:linear-gradient(rgba(35,25,20,.45),rgba(35,25,20,.55)),url('https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=1600&q=80') center/cover;color:white}
+
 .hero small{letter-spacing:5px}
-.hero h1{font-family:Georgia,serif;font-size:clamp(42px,8vw,76px);max-width:750px;margin:25px 0}
-.hero p{font-size:19px;max-width:600px;line-height:1.6}
-.searchbox{margin-top:35px;background:white;color:#333;padding:18px;border-radius:18px;max-width:750px;display:flex;flex-wrap:wrap;gap:10px}
-.searchbox input{flex:1;min-width:140px;padding:14px;border:1px solid #eee;border-radius:10px}
-.searchbox button{background:#241d1a;color:white;border:0;padding:14px 22px;border-radius:10px}
+
+.hero h1{font-family:Georgia,serif;font-size:clamp(40px,8vw,75px);font-weight:normal;margin:20px 0}
+
+.hero p{font-size:18px;line-height:1.7;max-width:600px}
+
+.searchbox{margin-top:30px;background:white;border-radius:18px;padding:15px;display:flex;flex-wrap:wrap;gap:10px;max-width:700px}
+
+.searchbox input{flex:1;min-width:180px;padding:15px;border:1px solid #ddd;border-radius:10px;font-size:16px}
+
+button,.btn{background:#241d1a;color:white;border:0;padding:15px 22px;border-radius:30px;cursor:pointer;text-decoration:none}
+
+.searchbox button{width:100%}
+
 section{padding:60px 6%}
-h2{text-align:center;font-family:Georgia,serif;font-size:36px;margin-bottom:15px}
+
+h2{text-align:center;font-family:Georgia,serif;font-size:36px;font-weight:normal;margin-bottom:15px}
+
 .sub{text-align:center;color:#777;margin-bottom:30px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px}
-.card{background:white;border-radius:16px;overflow:hidden;box-shadow:0 4px 20px #00000008}
-.card img{width:100%;height:240px;object-fit:cover}
-.card h3{padding:15px 15px 8px}
+
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+
+.card{background:white;border-radius:15px;overflow:hidden;box-shadow:0 4px 15px #00000008}
+
+.card img{width:100%;height:250px;object-fit:cover}
+
+.card h3{padding:15px}
+
 .card p{padding:0 15px 15px;color:#777}
-.card button{margin:0 15px 18px}
-.btn{display:inline-block;text-decoration:none}
-.artist{padding:25px}
-.artist h3{margin-bottom:10px}
-.artist p{margin:8px 0;color:#777}
+
+.card .btn{display:inline-block;margin:0 15px 18px}
+
+.artist{background:white;padding:25px;border-radius:15px;margin:12px 0}
+
+.artist p{margin:10px 0;color:#777}
+
 .formbox{max-width:600px;margin:auto;background:white;padding:25px;border-radius:18px}
+
 form input,form select,form textarea{width:100%;padding:14px;margin:10px 0;border:1px solid #ddd;border-radius:10px;font-size:16px}
-form button{width:100%;padding:15px;background:#241d1a;color:white;border:0;border-radius:10px;font-size:16px}
-.hidden{display:none}
-footer{background:#241d1a;color:white;padding:35px;text-align:center}
-footer p{margin-top:10px;color:#ccc}
+
+form button{width:100%;margin-top:10px}
+
+footer{text-align:center;background:#241d1a;color:white;padding:30px}
+
 .mobile-nav{display:none}
-@media(max-width:650px){
-header{padding:16px 5%}
-nav a{display:none}
-nav button{padding:10px}
-.hero{padding:75px 6%;min-height:620px}
-.hero h1{font-size:52px}
+
+@media(max-width:700px){
+
+header{padding:18px 5%}
+
+.menu-btn{display:block}
+
+nav{display:none;position:absolute;top:75px;left:0;width:100%;background:#faf8f5;z-index:20;flex-direction:column;align-items:stretch;gap:0;padding:10px 5%;box-shadow:0 8px 20px #0001}
+
+nav.open{display:flex}
+
+nav a{padding:18px 10px;border-bottom:1px solid #eee;font-size:18px}
+
+.hero{padding:75px 5%;min-height:600px}
+
+.hero h1{font-size:48px}
+
+.hero p{font-size:17px}
+
 .searchbox{flex-direction:column}
-.searchbox input,.searchbox button{width:100%}
+
+.searchbox input{width:100%}
+
+.grid{grid-template-columns:1fr}
+
 section{padding:45px 5%}
-h2{font-size:30px}
+
+.card img{height:280px}
+
+.mobile-nav{display:flex;position:fixed;bottom:0;left:0;width:100%;background:#faf8f5;border-top:1px solid #ddd;justify-content:space-around;padding:12px 5%;z-index:30}
+
+.mobile-nav a{color:#8b5c52;text-decoration:none;text-align:center;font-size:13px}
+
+.mobile-nav span{display:block;font-size:22px;margin-bottom:5px}
+
+body{padding-bottom:80px}
+
 }
+
 </style>
+
 </head>
+
 <body>
 
 <header>
-<div class="logo">Nailora <span style="color:#9b5f55">.</span></div>
-<nav>
-<a href="#designs">Designs</a>
-<a href="#artists">Find an artist</a>
-<a href="#technicians">For technicians</a>
-<button onclick="showSection('booking')">Book now</button>
+
+<div class="logo">Nailora <span style="color:#9b5b50">.</span></div>
+
+<button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+<nav id="menu">
+
+<a href="#home" onclick="closeMenu()">Home</a>
+
+<a href="#designs" onclick="closeMenu()">Designs</a>
+
+<a href="#artists" onclick="closeMenu()">Find an artist</a>
+
+<a href="#technicians" onclick="closeMenu()">For technicians</a>
+
+<a href="#booking" onclick="closeMenu()">Book now</a>
+
 </nav>
+
 </header>
 
-<div id="home">
-<section class="hero">
+<div class="hero" id="home">
+
 <small>LUXURY NAIL BOOKING</small>
+
 <h1>Beautiful nails,<br><i>beautifully booked.</i></h1>
-<p>Discover stunning designs and book the most talented nail artists in your city.</p>
+
+<p>Discover stunning designs and book talented nail artists in your city.</p>
+
 <div class="searchbox">
-<input id="citySearch" placeholder="City or neighborhood">
-<input id="serviceSearch" placeholder="Gel, acrylic, artist name...">
+
+<input id="city" placeholder="City or neighborhood">
+
+<input id="service" placeholder="Gel, acrylic, artist name...">
+
 <button onclick="searchArtists()">Search artists</button>
+
 </div>
-</section>
+
 </div>
 
 <section id="designs">
+
 <h2>Discover nail designs</h2>
+
 <p class="sub">Find your next nail inspiration.</p>
+
 <div class="grid">
+
 <div class="card">
-<img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=700&q=80">
-<h3>Elegant Nude</h3><p>Natural • Timeless</p>
-<button class="btn" onclick="showSection('booking')">Book this style</button>
+
+<img src="https://images.unsplash.com/photo-1610992015732-2449b763bcd5?auto=format&fit=crop&w=800&q=80">
+
+<h3>Elegant nails</h3>
+
+<p>Beautiful everyday nail inspiration.</p>
+
+<a class="btn" href="#booking">Book this style</a>
+
 </div>
+
 <div class="card">
-<img src="https://images.unsplash.com/photo-1610992015732-2449b763f5d8?auto=format&fit=crop&w=700&q=80">
-<h3>French Elegance</h3><p>Classic • Chic</p>
-<button class="btn" onclick="showSection('booking')">Book this style</button>
+
+<img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=800&q=80">
+
+<h3>Luxury manicure</h3>
+
+<p>Discover modern luxury nail looks.</p>
+
+<a class="btn" href="#booking">Book this style</a>
+
 </div>
+
 <div class="card">
-<img src="https://images.unsplash.com/photo-1632345031435-8727f6897d53?auto=format&fit=crop&w=700&q=80">
-<h3>Luxury Nail Art</h3><p>Creative • Premium</p>
-<button class="btn" onclick="showSection('booking')">Book this style</button>
+
+<img src="https://images.unsplash.com/photo-1632345031435-8727f6897d53?auto=format&fit=crop&w=800&q=80">
+
+<h3>Creative nails</h3>
+
+<p>Explore beautiful nail art.</p>
+
+<a class="btn" href="#booking">Book this style</a>
+
 </div>
-<div class="card">
-<img src="https://images.unsplash.com/photo-1614909998553-3d2d0c6a5d9c?auto=format&fit=crop&w=700&q=80">
-<h3>Glossy Nails</h3><p>Modern • Beautiful</p>
-<button class="btn" onclick="showSection('booking')">Book this style</button>
+
 </div>
-</div>
+
 </section>
 
 <section id="artists">
-<h2>Find nail artists</h2>
-<p class="sub">Discover professionals near you.</p>
-<div id="artistResults" class="grid">
-<div class="card artist">
-<h3>Discover professionals</h3>
-<p>Search your city to find nail technicians.</p>
-</div>
-</div>
-</section>
 
-<section id="booking" class="hidden">
-<h2>Book an appointment</h2>
-<p class="sub">Request your appointment with a nail artist.</p>
-<div class="formbox">
-<form onsubmit="submitBooking(event)">
-<input id="bookingName" placeholder="Your full name" required>
-<input id="bookingPhone" placeholder="Phone number" required>
-<input id="bookingCity" placeholder="City" required>
-<select id="bookingService" required>
-<option value="">Select a service</option>
-<option>Manicure</option>
-<option>Gel nails</option>
-<option>Acrylic nails</option>
-<option>Pedicure</option>
-<option>Nail art</option>
-<option>Other</option>
-</select>
-<input id="bookingDate" type="date" required>
-<textarea id="bookingNotes" placeholder="Additional details (optional)"></textarea>
-<button type="submit">Send booking request</button>
-</form>
+<h2>Find a nail artist</h2>
+
+<p class="sub">Discover talented nail technicians near you.</p>
+
+<div id="artistResults">
+
+<div class="artist">
+
+<h3>Find your nail technician</h3>
+
+<p>Search by city, service or artist name using the search box above.</p>
+
+<a class="btn" href="#booking">Make a booking request</a>
+
 </div>
+
+</div>
+
 </section>
 
 <section id="technicians">
-<h2>Join Nailora</h2>
-<p class="sub">Grow your nail business. Connect with new clients.</p>
+
+<h2>Are you a nail technician?</h2>
+
+<p class="sub">Join Nailora and let clients discover your work.</p>
+
 <div class="formbox">
-<form onsubmit="submitArtist(event)">
-<input id="techName" placeholder="Your name or salon name" required>
-<input id="techPhone" placeholder="Phone number" required>
-<input id="techCity" placeholder="City and location" required>
-<select id="techServices" required>
-<option value="">Your main service</option>
-<option>Manicure</option>
-<option>Gel nails</option>
-<option>Acrylic nails</option>
-<option>Pedicure</option>
-<option>Nail art</option>
-<option>All nail services</option>
-</select>
-<textarea id="techAbout" placeholder="Tell clients about your work"></textarea>
-<button type="submit">Apply to join Nailora</button>
+
+<form onsubmit="registerArtist(event)">
+
+<input id="artistName" placeholder="Your full name" required>
+
+<input id="artistCity" placeholder="Your city" required>
+
+<input id="artistPhone" placeholder="Phone number" required>
+
+<input id="artistService" placeholder="Services you offer" required>
+
+<textarea id="artistAbout" placeholder="Tell clients about your work"></textarea>
+
+<button type="submit">Submit registration</button>
+
 </form>
+
 </div>
+
+</section>
+
+<section id="booking">
+
+<h2>Request a booking</h2>
+
+<p class="sub">Send a booking request to a nail artist.</p>
+
+<div class="formbox">
+
+<form onsubmit="bookAppointment(event)">
+
+<input id="clientName" placeholder="Your name" required>
+
+<input id="clientPhone" placeholder="Your phone number" required>
+
+<input id="bookingCity" placeholder="City" required>
+
+<input id="bookingService" placeholder="Service you want" required>
+
+<input id="bookingDate" type="date" required>
+
+<textarea id="bookingNotes" placeholder="Additional details"></textarea>
+
+<button type="submit">Send booking request</button>
+
+</form>
+
+</div>
+
 </section>
 
 <footer>
-<div class="logo">Nailora.</div>
-<p>Discover. Connect. Book.</p>
-<p>Luxury nail beauty, made simple.</p>
+
+<p>Nailora — Beautiful nails, beautifully booked.</p>
+
+<p style="margin-top:10px">Discover. Book. Beauty.</p>
+
 </footer>
 
+<div class="mobile-nav">
+
+<a href="#home"><span>⌂</span>Home</a>
+
+<a href="#designs"><span>✧</span>Designs</a>
+
+<a href="#artists"><span>⌕</span>Find</a>
+
+<a href="#booking"><span>▣</span>Bookings</a>
+
+</div>
+
 <script>
-function showSection(id){
-document.getElementById('booking').classList.add('hidden');
-document.getElementById('designs').classList.remove('hidden');
-document.getElementById('artists').classList.remove('hidden');
-document.getElementById('technicians').classList.remove('hidden');
-if(id==='booking'){
-document.getElementById('booking').classList.remove('hidden');
-document.getElementById('booking').scrollIntoView({behavior:'smooth'});
-}else{
-document.getElementById(id).scrollIntoView({behavior:'smooth'});
+
+function toggleMenu(){
+
+document.getElementById('menu').classList.toggle('open');
+
 }
+
+function closeMenu(){
+
+document.getElementById('menu').classList.remove('open');
+
 }
 
 function searchArtists(){
-const city=document.getElementById('citySearch').value;
-const service=document.getElementById('serviceSearch').value;
-const result=document.getElementById('artistResults');
-result.innerHTML='<div class="card artist"><h3>Search for '+(service||'nail services')+'</h3><p>Location: '+(city||'Any city')+'</p><p>Artist profiles will appear here as Nailora professionals join.</p></div>';
+
+let city=document.getElementById('city').value;
+
+let service=document.getElementById('service').value;
+
 document.getElementById('artists').scrollIntoView({behavior:'smooth'});
+
+document.getElementById('artistResults').innerHTML=
+
+'<div class="artist"><h3>Search results</h3><p>Location: '+(city||'Any city')+'</p><p>Service: '+(service||'Any service')+'</p><p>Nail artist listings will be available as technicians join Nailora.</p><a class="btn" href="#technicians">Join as a technician</a></div>';
+
 }
 
-function submitBooking(e){
+function registerArtist(e){
+
 e.preventDefault();
-alert('Your booking request form is ready. Online booking delivery will be connected when Nailora backend is built.');
+
+alert('Your registration form is ready. Online registration storage will be connected in a future development step.');
+
 }
 
-function submitArtist(e){
+function bookAppointment(e){
+
 e.preventDefault();
-alert('Your technician registration form is ready. Nailora verification will be connected when the backend is built.');
+
+alert('Your booking form is ready. Online booking and confirmation system will be connected in a future development step.');
+
 }
+
 </script>
 
 </body>
+
 </html>
