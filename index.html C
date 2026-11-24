@@ -152,6 +152,9 @@ footer{background:#241d1a;color:white;text-align:center;padding:35px 20px}
 <input id="techPhone" placeholder="Phone number" required>
 <input id="techLocation" placeholder="Your city or location" required>
 <input id="techServices" placeholder="Services you offer" required>
+<input id="techInstagram" placeholder="Instagram username">
+<input id="techInstagramLink" type="url" placeholder="Instagram profile link">
+<textarea id="techPortfolio" placeholder="Links to nail design posts"></textarea>
 <textarea id="techDetails" placeholder="Tell us about your nail business"></textarea>
 <button type="submit">Register as a technician</button>
 </form>
