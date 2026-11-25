@@ -175,6 +175,8 @@ footer{background:#241d1a;color:white;text-align:center;padding:35px 20px}
 </div>
 
 <script>
+const SUPABASE_URL = "https://hrxklkbcpbapeqwrhxdz.supabase.co";
+const SUPABASE_KEY = "sb_publishable_WWNzo5DUco9BCya8HDBECA_ekJoVBpP";
 function toggleMenu(){
  document.getElementById('menu').classList.toggle('open');
 }
