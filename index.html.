@@ -199,10 +199,58 @@ document.getElementById('bookingForm').addEventListener('submit',function(e){
  e.preventDefault();
  alert('Your booking form is ready. Nailora needs a backend connection to receive and save real booking requests.');
 });
-document.getElementById('technicianForm').addEventListener('submit',function(e){
- e.preventDefault();
- alert('Your registration form is ready. Nailora needs a backend connection to receive and verify technician registrations.');
+
+document.getElementById('technicianForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+
+  const button = this.querySelector('button[type="submit"]');
+  button.disabled = true;
+  button.textContent = 'Registering...';
+
+  const technician = {
+    name: document.getElementById('techName').value.trim(),
+    phone: document.getElementById('techPhone').value.trim(),
+    location: document.getElementById('techLocation').value.trim(),
+    services: document.getElementById('techServices').value.trim(),
+    instagram_username: document.getElementById('techInstagram').value.trim(),
+    instagram_link: document.getElementById('techInstagramLink').value.trim(),
+    design_links: document.getElementById('techPortfolio').value.trim(),
+    business_description: document.getElementById('techDetails').value.trim()
+  };
+
+  try {
+    const response = await fetch(
+      SUPABASE_URL + '/rest/v1/technicians',
+      {
+        method: 'POST',
+        headers: {
+          'apikey': SUPABASE_KEY,
+          'Authorization': 'Bearer ' + SUPABASE_KEY,
+          'Content-Type': 'application/json',
+          'Prefer': 'return=representation'
+        },
+        body: JSON.stringify(technician)
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(await response.text());
+    }
+
+    alert('Registration successful! Welcome to Nailora.');
+    this.reset();
+
+  } catch (error) {
+    console.error(error);
+    alert('Registration failed. Please try again.');
+  } finally {
+    button.disabled = false;
+    button.textContent = 'Register as a technician';
+  }
 });
+
+ 
+ 
 </script>
 </body>
 </html>
